@@ -1,4 +1,4 @@
-<template>
+<template >
   <view>
     <web-view :src="src"></web-view>
   </view>

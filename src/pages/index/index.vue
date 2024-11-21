@@ -15,9 +15,31 @@ import {onMounted, ref} from 'vue'
 import CanvasView from "@/components/canvasView/index.vue";
 const title = ref('Hello')
 
+function play():void {
+  if (import.meta.env.PROD) {
+    const innerAudioContext = uni.createInnerAudioContext();
+    innerAudioContext
+        .autoplay = true;
+    innerAudioContext
+        .src = '/static/audio/manman.mp3';
+    innerAudioContext
+        .onPlay(() => {
+          console
+              .log('开始播放');
+        });
+    innerAudioContext
+        .onError((res) => {
+          console
+              .log(res.errMsg);
+          console
+              .log(res.errCode);
+        });
+  }
+}
 onMounted(() => {
-  console.log('mounted++-----')
+  play()
 })
+
 </script>
 
 <style>
