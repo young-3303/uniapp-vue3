@@ -5,9 +5,9 @@
   <!--    <text class="title">{{ title }}</text>-->
   <!--  </view>-->
   <!--</view>-->
-  <div>
+  <view>
     <canvasView></canvasView>
-  </div>
+  </view>
 </template>
 
 <script setup lang="ts">
