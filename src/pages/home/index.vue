@@ -1,13 +1,33 @@
 <template xmlns="">
   <view class="home">
-    <h1>home---test</h1>
-    <uni-calendar
-        :insert="true"
-        :lunar="true"
-        :start-date="'2019-3-2'"
-        :end-date="'2019-5-20'">
-    </uni-calendar>
+    <button @click="open">打开弹窗</button>
+    <uni-popup ref="popup" type="dialog">
+      <uni-popup-dialog
+          mode="base"
+          message="成功消息"
+          title=""
+          confirmText="喜欢"
+          cancelText="不喜欢"
+          :duration="2000"
+          :before-close="true"
+          @close="close"
+          @confirm="confirm">
+        你喜欢我吗
+      </uni-popup-dialog>
+    </uni-popup>
   </view>
 </template>
 <script setup lang="ts">
+import {ref} from "vue";
+
+const popup = ref()
+function close() {
+  popup.value.close()
+}
+function confirm(val) {
+
+}
+function open() {
+  popup.value.open()
+}
 </script>

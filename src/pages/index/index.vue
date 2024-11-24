@@ -16,7 +16,7 @@ import CanvasView from "@/components/canvasView/index.vue";
 const title = ref('Hello')
 
 function play():void {
-  if (import.meta.env.PROD) {
+  if (!import.meta.env.PROD) {
     const innerAudioContext = uni.createInnerAudioContext();
     innerAudioContext
         .autoplay = true;
