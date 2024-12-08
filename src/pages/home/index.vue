@@ -21,6 +21,7 @@ import {onMounted, ref} from "vue";
 
 const popup = ref()
 function close() {
+  console.log('cancel')
   popup.value.close()
 }
 function confirm(val) {

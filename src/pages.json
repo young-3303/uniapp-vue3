@@ -9,10 +9,14 @@
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
+      "path": "pages/Confession/index"
+    },
+    {
       "path": "pages/home/index",
       "style": {
         "enablePullDownRefresh": true,
-        "navigationBarTitleText": "送给你的"
+        "navigationBarTitleText": "送给你的",
+        "titleNView": false
       }
     },
     {
@@ -20,7 +24,10 @@
       "style": {
         // "navigationBarTitleText": "uni-app"
       }
-    }
+    },
+//    {
+//      "path": "pages/Confession/index"
+//    }
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",

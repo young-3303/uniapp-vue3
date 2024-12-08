@@ -7,6 +7,17 @@
   <!--</view>-->
   <view>
     <canvasView @webview-loaded="loaded" :src="src"></canvasView>
+    <uni-popup ref="popup" type="dialog">
+      <uni-popup-dialog
+          mode="base"
+          title=""
+          confirmText="确定"
+          :duration="2000"
+          :before-close="true"
+          @confirm="confirm">
+        听完了歌曲，下面有一些话我想对你说
+      </uni-popup-dialog>
+    </uni-popup>
   </view>
 </template>
 
@@ -14,11 +25,13 @@
 import {onMounted, ref} from 'vue'
 import CanvasView from "@/components/canvasView/index.vue";
 const title = ref('Hello')
+const popup = ref()
 // const src = ref<string>('http://121.40.131.144/')
 const src = ref<string>('https://young-3303.github.io/forever_young/')
+let innerAudioContext: any = null
 function play():void {
-  if (!import.meta.env.PROD) {
-    const innerAudioContext = uni.createInnerAudioContext();
+  if (true) {
+    innerAudioContext = uni.createInnerAudioContext();
     innerAudioContext
         .autoplay = true;
     innerAudioContext
@@ -37,12 +50,26 @@ function play():void {
         });
   }
 }
+
 function loaded() {
-  console.log('loaded');
   play()
+  innerAudioContext.onEnded(() => {
+    console.log('结束了')
+    popup.value.open()
+  })
+}
+
+function onEnded() {
+  console.log('onEnded');
+}
+function confirm() {
+  uni.redirectTo({
+    url: 'pages/Confession/index'
+  })
 }
 onMounted(() => {
-
+  console.log('hala', popup.value)
+  popup.value.open()
 })
 
 </script>
