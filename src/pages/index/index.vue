@@ -6,7 +6,7 @@
   <!--  </view>-->
   <!--</view>-->
   <view>
-    <canvasView></canvasView>
+    <canvasView @webview-loaded="loaded" :src="src"></canvasView>
   </view>
 </template>
 
@@ -14,7 +14,8 @@
 import {onMounted, ref} from 'vue'
 import CanvasView from "@/components/canvasView/index.vue";
 const title = ref('Hello')
-
+// const src = ref<string>('http://121.40.131.144/')
+const src = ref<string>('https://young-3303.github.io/forever_young/')
 function play():void {
   if (!import.meta.env.PROD) {
     const innerAudioContext = uni.createInnerAudioContext();
@@ -36,8 +37,12 @@ function play():void {
         });
   }
 }
-onMounted(() => {
+function loaded() {
+  console.log('loaded');
   play()
+}
+onMounted(() => {
+
 })
 
 </script>

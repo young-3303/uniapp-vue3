@@ -1,6 +1,5 @@
 <template xmlns="">
   <view class="home">
-    <button @click="open">打开弹窗</button>
     <uni-popup ref="popup" type="dialog">
       <uni-popup-dialog
           mode="base"
@@ -18,16 +17,28 @@
   </view>
 </template>
 <script setup lang="ts">
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 
 const popup = ref()
 function close() {
   popup.value.close()
 }
 function confirm(val) {
-
+  uni.redirectTo({
+    url: '/pages/index/index'
+  })
 }
 function open() {
   popup.value.open()
 }
+onMounted(() => {
+  open()
+})
 </script>
+<style>
+.home {
+  height: 100vh;
+  background: url("~@/assets/img/bb.png");
+  background-size: contain;
+}
+</style>
