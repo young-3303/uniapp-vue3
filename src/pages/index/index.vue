@@ -7,17 +7,6 @@
   <!--</view>-->
   <view>
     <canvasView @webview-loaded="loaded" :src="src"></canvasView>
-    <uni-popup ref="popup" type="dialog">
-      <uni-popup-dialog
-          mode="base"
-          title=""
-          confirmText="确定"
-          :duration="2000"
-          :before-close="true"
-          @confirm="confirm">
-        听完了歌曲，下面有一些话我想对你说
-      </uni-popup-dialog>
-    </uni-popup>
   </view>
 </template>
 
@@ -54,8 +43,16 @@ function play():void {
 function loaded() {
   play()
   innerAudioContext.onEnded(() => {
-    console.log('结束了')
-    popup.value.open()
+    uni.showModal({
+      showCancel: false,
+      title: '提示',
+      content: '听完了歌曲，最后还有些话对你说',
+      complete() {
+        uni.redirectTo({
+          url: 'pages/Confession/index'
+        })
+      }
+    })
   })
 }
 
@@ -68,8 +65,6 @@ function confirm() {
   })
 }
 onMounted(() => {
-  console.log('hala', popup.value)
-  popup.value.open()
 })
 
 </script>

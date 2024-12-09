@@ -8,7 +8,7 @@
 import {onMounted, ref} from "vue";
 
 const text = ref()
-const textContent = ref('')
+const textContent = ref('遇见你的每一天都是星辰大海')
 const visibility = ref(false)
 onMounted(() => {
   play()
@@ -36,6 +36,7 @@ function play():void {
         .autoplay = true;
     innerAudioContext
         .src = '/static/audio/luxiaoyu.mp3';
+    innerAudioContext.loop = true;
     innerAudioContext
         .onPlay(() => {
         });
@@ -48,25 +49,6 @@ function play():void {
         });
   }
 }
-// onMounted(() => {
-//   const text = document.getElementById('romanticText');
-//   let index = 0;
-//   const words = ["遇见你的每一天都是星辰大海。",
-//     "与你一见如故，尽余生之欢。",
-//     "你是我心中最美的星辰。",
-//     "愿陪你走完这漫漫人生路。"];
-//
-//   function changeText() {
-//     text.style.opacity = 0;
-//     setTimeout(() => {
-//       text.textContent = words[index];
-//       text.style.opacity = 1;
-//       index = (index + 1) % words.length;
-//     }, 500); // 等待半秒让淡出效果完成
-//   }
-//
-//   setInterval(changeText, 6000); // 每6秒更换一次文字
-// })
 </script>
 
 
