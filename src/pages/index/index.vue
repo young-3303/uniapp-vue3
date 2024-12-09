@@ -49,7 +49,7 @@ function loaded() {
       content: '听完了歌曲，最后还有些话对你说',
       complete() {
         uni.redirectTo({
-          url: 'pages/Confession/index'
+          url: '/pages/Confession/index'
         })
       }
     })
